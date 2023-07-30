@@ -1,6 +1,6 @@
-export interface Product {
+export default interface IProduct {
   id: number;
   name: string;
   price: number;
-  quantity: number;
+  description: number;
 }
