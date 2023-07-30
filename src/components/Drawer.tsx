@@ -11,6 +11,8 @@ export function DrawerComponent() {
     <Drawer.Navigator>
       <Drawer.Screen name="Resumo" component={MainPage} />
       <Drawer.Screen name="Produtos" component={ProductsPage} />
+      <Drawer.Screen name="Vendas" component={ProductsPage} />
+      <Drawer.Screen name="Logout" component={ProductsPage} />
     </Drawer.Navigator>
   );
 }
