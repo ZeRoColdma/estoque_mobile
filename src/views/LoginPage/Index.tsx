@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     width: 350,
   },
   inputView: {
-    backgroundColor: "#f8d7dd",
+    backgroundColor: "#fae9ec",
     borderRadius: 30,
     width: "90%",
     height: 45,
@@ -105,11 +105,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     padding: 10,
   },
+  
   TextInput: {
     height: 50,
     flex: 1,
     padding: 5,
   },
+
   forgot_button: {
     height: 30,
     marginBottom: 30,
@@ -130,4 +132,5 @@ const styles = StyleSheet.create({
   loginColor: {
     color: "#fff",
   },
+
 });

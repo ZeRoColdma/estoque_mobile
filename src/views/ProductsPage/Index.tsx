@@ -1,16 +1,10 @@
 import { useState, useEffect } from "react";
-import { View, StyleSheet } from "react-native";
-import { Table, Row, Rows } from 'react-native-table-component';
+import { StyleSheet, ScrollView } from "react-native";
 import api from "../../services/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import IProduct from "../../interfaces/Products";
-
+import ProductCard from "../../components/ProductsCard"
 export function ProductsPage() {
   const [produto, setProduto] = useState([]);
-  const [data, setData] = useState([]);
-
-  const tableHead = ['Name', 'Price'];
-  const tableData = [setProduto];
 
   async function getProducts() {
     const value = await AsyncStorage.getItem("token") || "{}";
@@ -28,20 +22,16 @@ export function ProductsPage() {
 
   return (
     <>
-      <View style={styles.container}>
-        <Table >
-          <Row data={tableHead} />
-        </Table>
-        {
-        produto.map((item: IProduct) => {
-          return (
-            <>
-              <Row data={[item.name, item.price]} />
-            </>
-          )
-        })
-      }
-      </View>
+      <ScrollView style={styles.container}>
+        {produto.map((product: any) => (
+          <ProductCard 
+            key={product.id}
+            name={product.name} 
+            price={product.price} 
+            description={product.description}
+          />
+        ))}
+      </ScrollView>
     </>
   );
 }
@@ -50,6 +40,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    padding: 20,
-  }
+    padding: 5,
+    alignContent: "center",
+  },
 });
