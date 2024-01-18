@@ -3,17 +3,26 @@ import { StyleSheet, ScrollView } from "react-native";
 import api from "../../services/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import ProductCard from "../../components/ProductsCard"
+import { decriptToken } from "../../util/decriptToken/decriptToken";
 export function ProductsPage() {
   const [produto, setProduto] = useState([]);
+  const [userId, setUserId] = useState<any>({});
 
   async function getProducts() {
-    const value = await AsyncStorage.getItem("token") || "{}";
-    const { data } = await api.get("/products", {
-      headers: {
-        Authorization: `Bearer ${value}`,
-      },
-    });
-    setProduto(data);
+    try {
+      const token = await AsyncStorage.getItem("token") || "{}";
+      const userId = decriptToken(token);
+      
+      const { data } = await api.get("/products", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setProduto(data);
+      setUserId((userId as any).id);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   useEffect(() => {
@@ -24,12 +33,12 @@ export function ProductsPage() {
     <>
       <ScrollView style={styles.container}>
         {produto.map((product: any) => (
-          <ProductCard 
+          <ProductCard
             key={product.id}
-            name={product.name} 
-            price={product.price} 
+            name={product.name}
+            price={product.price}
             description={product.description}
-            uri={product.uri}
+            userId={userId}
           />
         ))}
       </ScrollView>

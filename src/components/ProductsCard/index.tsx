@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet } from "react-native";
 import { Card, Paragraph } from 'react-native-paper';
 import IProduct from "../../interfaces/Products";
-import {AddNewProductComponent} from "../NewUserProductComponent";
+import { AddNewProductComponent } from "../NewUserProductComponent";
 
 export default function CardComponent({ name, price, description }: IProduct) {
   return (
