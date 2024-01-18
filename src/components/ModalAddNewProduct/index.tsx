@@ -1,15 +1,9 @@
 import React, { useState } from 'react';
 import { Modal, StyleSheet, Text, Pressable, View } from 'react-native';
-import { Button } from 'react-native-paper';
 import { ModalAddNewProductForm } from '../AddNewUseProductsForm';
 
 export function ModalAddNewProduct() {
   const [modalVisible, setModalVisible] = useState(false);
-  const [quantity, setQuantity] = useState(0);
-
-  function handleQuantity(quantity: number) {
-    console.log(quantity);
-  }
 
   return (
     <View style={styles.centeredView}>

@@ -1,17 +1,10 @@
-import React, {useState} from 'react';
-import { StyleSheet, Modal, View } from "react-native";
-import { Button, Card, Paragraph } from 'react-native-paper';
+import React from 'react';
+import { StyleSheet } from "react-native";
+import { Card, Paragraph } from 'react-native-paper';
 import IProduct from "../../interfaces/Products";
 import {AddNewProductComponent} from "../NewUserProductComponent";
 
 export default function CardComponent({ name, price, description }: IProduct) {
-  const [modalVisible, setModalVisible] = useState(false);
-
-  const toggleModal = () => {
-    setModalVisible(!modalVisible);
-  };
-
-
   return (
     <>
       <Card style={styles.cardStyle}>
