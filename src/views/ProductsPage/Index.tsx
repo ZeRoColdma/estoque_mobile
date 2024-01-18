@@ -29,6 +29,7 @@ export function ProductsPage() {
             name={product.name} 
             price={product.price} 
             description={product.description}
+            uri={product.uri}
           />
         ))}
       </ScrollView>
